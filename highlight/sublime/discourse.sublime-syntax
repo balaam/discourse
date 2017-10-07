@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: Discourse
+file_extensions:
+  - ds
+scope: markup
+contexts:
+  main:
+    - match: '^\S.*?:'
+      scope: markup.heading
+    - match: <script>
+      scope: entity.name
+      push: Packages/Lua/Lua.sublime-syntax
+      with_prototype:
+        - match: (?=</script>)
+          pop: true
+    - match: '<[^>]*>'
+      scope: entity.name
+    - match: "<"
+      scope: punctuation.definition.tag.begin
+    - match: ">"
+      scope: punctuation.definition.tag.end
+
